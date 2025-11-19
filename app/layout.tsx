@@ -6,14 +6,19 @@ import { assistantId } from "./assistant-config";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Assistants API Quickstart",
-  description: "A quickstart template using the Assistants API with OpenAI",
+  title: "Adam AI – Systemic Guide",
+  description:
+    "Have a text or voice conversation with Adam AI about money, work, care, and the systems shaping your life.",
   icons: {
-    icon: "/openai.svg",
+    icon: "/openai.svg", // can swap later for an Adam logo
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <head>
@@ -25,10 +30,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         ></script>
       </head>
       <body className={inter.className}>
-        {assistantId ? children : <Warnings />}
-        <img className="logo" src="/openai.svg" alt="OpenAI Logo" />
+        <div className="adam-shell">
+          <header className="adam-header">
+            <div className="adam-title-block">
+              <span className="adam-pill">Adam AI</span>
+              <h1>Systemic guidance, in conversation.</h1>
+              <p>
+                Ask your questions in text below. For voice, tap the Adam voice
+                button in the bottom-right corner.
+              </p>
+            </div>
+          </header>
 
-        {/* ElevenLabs Voice Widget – injected as raw HTML so TS stops complaining */}
+          <main className="adam-main">
+            {assistantId ? children : <Warnings />}
+          </main>
+        </div>
+
+        {/* ElevenLabs Voice Widget – rendered as custom element */}
         <div
           dangerouslySetInnerHTML={{
             __html:
