@@ -1,5 +1,3 @@
-export let assistantId = ""; // set your assistant ID here
+// app/assistant-config.ts
 
-if (assistantId === "") {
-  assistantId = process.env.OPENAI_ASSISTANT_ID;
-}
+export const assistantId = "asst_u3YwIfjdVbzJQcwPzolLS7u4";
